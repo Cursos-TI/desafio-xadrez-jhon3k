@@ -1,32 +1,114 @@
 #include <stdio.h>
 
-// Desafio de Xadrez - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
-
 int main() {
-    // Nível Novato - Movimentação das Peças
-    // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
 
-    // Implementação de Movimentação do Bispo
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
+    int i, opcao, lado;
+    // Entrada para o usuario passa a escolhar da peça
+    printf("Escolhar uma opção: \n1. Torre\n2. Bispo\n3. Rainha\n");
+    
+    printf("Escolhar: ");
+    scanf("%d", &opcao);  
 
-    // Implementação de Movimentação da Torre
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
+    // tratando a escolhar da peça
+    switch (opcao)
+    {
+    case 1:
+        //Tratando a escolhar da direção da peça
+        printf("Você escolheu Torre\nEscolhar o lado\n1. Direita\n2. Esquerda\nEscolhar: ");
+        scanf("%d", &lado);
 
-    // Implementação de Movimentação da Rainha
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
+        switch (lado)
+        {
+        case 1:
+            for (int i = 0; i < 5; i++)
+            {
+                printf("Direita\n");
+            }
+            break;
+        case 2:
+            for (int i = 0; i < 5; i++)
+            {
+                printf("Esquerda\n");
+            }
+            break;
+        
+        default:
+            printf("Opção inválida\n");
+            break;
+        }
+        break;
+    case 2:
+        //Resetando o valor de i
+        i = 0;
+        //Tratando a escolhar da direção da peça
+        printf("Você escolheu Bispo\nEscolhar a diagonal\n1. Diagonal Direita\n2. Diagonal Esquerda\nEscolhar: ");
+        scanf("%d", &lado);
 
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
-
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
-
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
+        switch (lado)
+        {
+        case 1:
+            while (i < 5)
+            {
+                printf("Diagonal Direita\n");
+                i++;
+            }
+            break;
+        case 2:
+            while (i < 5)
+            {
+                printf("Diagonal Esquerda\n");
+                i++;
+            }
+            break;
+        default:
+            printf("Opção inválida\n");
+            break;
+        }
+        break;
+    case 3:
+        //Resetando o valor de i
+        i = 0;
+        printf("Você escolheu Rainha\nEscolhar a direção\n1. cima\n2. baixo\n3. Direita\n4. Esquerda\nEscolhar: ");
+        scanf("%d", &lado);
+        switch (lado)
+        {
+        case 1:
+            do
+            {
+                printf("cima\n");
+                i++;
+            } while (i < 8);
+            break;
+        case 2:
+            do
+            {
+                printf("baixo\n");
+                i++;
+            } while (i < 8);
+            break;
+        case 3:
+            do
+            {
+                printf("Direita\n");
+                i++;
+            } while (i < 8);
+            break;
+        case 4:
+            do
+            {
+                printf("Esquerda\n");
+                i++;
+            } while (i < 8);
+            break;
+        default:
+            printf("Opção inválida");
+            break;
+        }
+        break;
+    default:
+        printf("Opção inválida\n");
+        break;
+    }
 
     return 0;
 }
