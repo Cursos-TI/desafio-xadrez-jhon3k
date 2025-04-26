@@ -3,30 +3,30 @@
 int main() {
 
     int i, opcao, lado;
-    // Entrada para o usuario passa a escolhar da peça
-    printf("Escolhar uma opção: \n1. Torre\n2. Bispo\n3. Rainha\n");
+    // Entrada para o usuario passa a escolha da peça
+    printf("Escolha uma opção: \n1. Torre\n2. Bispo\n3. Rainha\n");
     
-    printf("Escolhar: ");
+    printf("Escolha: ");
     scanf("%d", &opcao);  
 
-    // tratando a escolhar da peça
+    // tratando a escolha da peça
     switch (opcao)
     {
     case 1:
-        //Tratando a escolhar da direção da peça
-        printf("Você escolheu Torre\nEscolhar o lado\n1. Direita\n2. Esquerda\nEscolhar: ");
+        //Tratando a escolha da direção da peça
+        printf("Você escolheu Torre\nEscolha o lado\n1. Direita\n2. Esquerda\nEscolha: ");
         scanf("%d", &lado);
 
         switch (lado)
         {
         case 1:
-            for (int i = 0; i < 5; i++)
+            for (i = 0; i < 5; i++)
             {
                 printf("Direita\n");
             }
             break;
         case 2:
-            for (int i = 0; i < 5; i++)
+            for (i = 0; i < 5; i++)
             {
                 printf("Esquerda\n");
             }
@@ -40,8 +40,8 @@ int main() {
     case 2:
         //Resetando o valor de i
         i = 0;
-        //Tratando a escolhar da direção da peça
-        printf("Você escolheu Bispo\nEscolhar a diagonal\n1. Diagonal Direita\n2. Diagonal Esquerda\nEscolhar: ");
+        //Tratando a escolha da direção da peça
+        printf("Você escolheu Bispo\nEscolha a diagonal\n1. Diagonal Direita\n2. Diagonal Esquerda\nEscolha: ");
         scanf("%d", &lado);
 
         switch (lado)
@@ -68,7 +68,7 @@ int main() {
     case 3:
         //Resetando o valor de i
         i = 0;
-        printf("Você escolheu Rainha\nEscolhar a direção\n1. cima\n2. baixo\n3. Direita\n4. Esquerda\nEscolhar: ");
+        printf("Você escolheu Rainha\nEscolha a direção\n1. cima\n2. baixo\n3. Direita\n4. Esquerda\nEscolha: ");
         scanf("%d", &lado);
         switch (lado)
         {
