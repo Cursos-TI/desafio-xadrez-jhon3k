@@ -1,167 +1,99 @@
 #include <stdio.h>
 
+// Funções de movimentação
+void moverTorre(int casas) {
+    if (casas > 0) {
+        printf("Direita\n");
+        moverTorre(casas - 1);  
+    }
+}
+
+void moverBispo(int casas) {
+    if (casas > 0) {
+        printf("Cima\nDireita\n");
+        moverBispo(casas - 1);  
+    }
+}
+
+void moverRainha(int casas) {
+    if (casas > 0) {
+        printf("Esquerda\n");
+        moverRainha(casas - 1);  
+    }
+}
+
+void moverCavalo(int repeticoes) {
+    if (repeticoes > 0) {
+        printf("Cima\nCima\nDireita\n");
+        moverCavalo(repeticoes - 1);  
+    }
+}
+
+// Função auxiliar para ler o número de passos e validar se está no intervalo permitido
+int lerPassos(int min, int max) {
+    int passos;
+    scanf("%d", &passos);
+
+    if (passos >= min && passos <= max) {
+        return passos;  
+    } else {
+        printf("Valor inválido. Deve estar entre %d e %d.\n", min, max);
+        return -1;  
+    }
+}
+
 int main() {
+    int opcao, passos;
 
-    int i, opcao, lado, movimentoCompleto = 1;
-
-    // Entrada para o usuario passa a escolha da peça
-    printf("Escolha uma opção: \n1. Torre\n2. Bispo\n3. Rainha\n4. Cavalo\n");
-    
+    // Exibe menu de escolha para o usuário
+    printf("Escolha uma peça para mover:\n");
+    printf("1. Torre\n2. Bispo\n3. Rainha\n4. Cavalo\n");
     printf("Escolha: ");
-    scanf("%d", &opcao);  
+    scanf("%d", &opcao); 
 
-    // tratando a escolha da peça
-    switch (opcao)
-    {
+    // Trata cada peça com sua lógica específica
+    switch (opcao) {
     case 1:
-        //Tratando a escolha da direção da peça Torre
-        printf("Você escolheu Torre\nEscolha o lado\n1. Direita\n2. Esquerda\nEscolha: ");
-        scanf("%d", &lado);
-
-        switch (lado)
-        {
-        case 1:
-            for (i = 0; i < 5; i++)
-            {
-                printf("Direita\n");
-            }
-            break;
-        case 2:
-            for (i = 0; i < 5; i++)
-            {
-                printf("Esquerda\n");
-            }
-            break;
-        
-        default:
-            printf("Opção inválida\n");
-            break;
+        // Torre: movimenta entre 1 e 5 casas para a direita
+        printf("\nVocê escolheu Torre.\nEscolha o número de casas para a direita (1 a 5): ");
+        passos = lerPassos(1, 5);  // usa função auxiliar para validar
+        if (passos != -1) {
+            printf("Vai andar %d casa(s):\n", passos);
+            moverTorre(passos);  // chama a função de movimento
         }
         break;
+
     case 2:
-        //Resetando o valor de i
-        i = 0;
-        //Tratando a escolha da direção da peça Bispo
-        printf("Você escolheu Bispo\nEscolha a diagonal\n1. Diagonal Direita\n2. Diagonal Esquerda\nEscolha: ");
-        scanf("%d", &lado);
+        // Bispo: movimenta entre 1 e 5 casas na diagonal superior direita
+        printf("\nVocê escolheu Bispo.\nEscolha o número de casas na diagonal superior direita (1 a 5): ");
+        passos = lerPassos(1, 5);
+        if (passos != -1) {
+            printf("Vai andar %d casa(s):\n", passos);
+            moverBispo(passos);
+        }
+        break;
 
-        switch (lado)
-        {
-        case 1:
-            while (i < 5)
-            {
-                printf("Diagonal Direita\n");
-                i++;
-            }
-            break;
-        case 2:
-            while (i < 5)
-            {
-                printf("Diagonal Esquerda\n");
-                i++;
-            }
-            break;
-        default:
-            printf("Opção inválida\n");
-            break;
-        }
-        break;
     case 3:
-        //Resetando o valor de i
-        i = 0;
-        //Tratando a escolha da direção da peça Rainha
-        printf("Você escolheu Rainha\nEscolha a direção\n1. cima\n2. baixo\n3. Direita\n4. Esquerda\nEscolha: ");
-        scanf("%d", &lado);
-        switch (lado)
-        {
-        case 1:
-            do
-            {
-                printf("cima\n");
-                i++;
-            } while (i < 8);
-            break;
-        case 2:
-            do
-            {
-                printf("baixo\n");
-                i++;
-            } while (i < 8);
-            break;
-        case 3:
-            do
-            {
-                printf("Direita\n");
-                i++;
-            } while (i < 8);
-            break;
-        case 4:
-            do
-            {
-                printf("Esquerda\n");
-                i++;
-            } while (i < 8);
-            break;
-        default:
-            printf("Opção inválida");
-            break;
+        // Rainha: movimenta entre 1 e 8 casas para a esquerda
+        printf("\nVocê escolheu Rainha.\nEscolha o número de casas para a esquerda (1 a 8): ");
+        passos = lerPassos(1, 8);
+        if (passos != -1) {
+            printf("Vai andar %d casa(s):\n", passos);
+            moverRainha(passos);
         }
         break;
+
     case 4:
-        //Tratando a escolha da direção da peça Cavalo
-        printf("Você escolheu o Cavalo\nEscolha a direção\n1. Cima Direita\n2. Cima Esquerda\n3. Baixo Direita\n4. Baixo Esquerda\nEscolhar: ");
-        scanf("%d", &lado);
-        switch (lado)
-        {
-        case 1:
-            while (movimentoCompleto--)
-            {
-                for ( i = 0; i < 2; i++)
-                {
-                    printf("Cima\n");
-                }
-                printf("Direita\n");
-            }
-            break;
-        case 2:
-            while (movimentoCompleto--)
-            {
-                for ( i = 0; i < 2; i++)
-                {
-                    printf("Cima\n");
-                }
-                printf("Esquerda\n");
-            }
-            break;
-        case 3:
-            while (movimentoCompleto--)
-            {
-                for ( i = 0; i < 2; i++)
-                {
-                    printf("Baixo\n");
-                }
-                printf("Direita\n");
-            }
-            break;
-        case 4:
-            while (movimentoCompleto--)
-            {
-                for ( i = 0; i < 2; i++)
-                {
-                    printf("Baixo\n");
-                }
-                printf("Esquerda\n");
-            }
-            break;
-        default:
-            printf("Opção inválida\n");
-            break;
-        }
+        // Cavalo: faz 1 movimento fixo em L
+        printf("\nVocê escolheu o Cavalo.\nVai realizar 1 movimento em L (cima-cima-direita):\n");
+        moverCavalo(1);
         break;
+
     default:
-        printf("Opção inválida\n");
+        printf("\nOpção inválida.\n");
         break;
     }
 
+    printf("\nFim do programa.\n");
     return 0;
 }
